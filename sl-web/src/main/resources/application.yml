@@ -1,0 +1,12 @@
+server:
+  port: 9008
+
+devtools:
+  livereload:
+    enabled: true #是否支持livereload
+    port: 35729
+  restart:
+    enabled: true #是否支持热部署
+spring:
+  main:
+    allow-bean-definition-overriding: true

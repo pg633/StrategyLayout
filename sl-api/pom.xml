@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.pg</groupId>
+        <artifactId>StrategyLayout</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <groupId>com.pg</groupId>
+    <artifactId>sl-api</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>default-deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.facebook.mojo</groupId>
+                <artifactId>swift-maven-plugin</artifactId>
+                <version>0.18.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skip>false</skip>           <!-- 是否使用Maven插件 -->
+                    <defaultPackage></defaultPackage>
+                    <idlFiles>
+                        <directory>${project.basedir}/etc/thrift/</directory>    <!-- IDL文件目录 -->
+                        <includes>
+                            <include>**/*.thrift</include>
+                        </includes>
+                        <!--<excludes>-->
+                        <!--<exclude></exclude>-->    <!-- 排除哪些IDL文件 -->
+                        <!--</excludes>-->
+                    </idlFiles>
+                    <outputFolder>${project.basedir}/src/main/java</outputFolder>    <!-- 生成的目标代码文件放在哪里，一般是java代码根目录 -->
+                    <generateIncludedCode>false</generateIncludedCode>
+                    <codeFlavor>java-regular</codeFlavor>
+                    <addThriftExceptions>true</addThriftExceptions>
+                    <extendRuntimeException>true</extendRuntimeException>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.facebook.swift</groupId>
+            <artifactId>swift-annotations</artifactId>
+            <version>0.23.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>${thrift.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>
