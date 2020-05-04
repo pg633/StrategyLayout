@@ -20,16 +20,16 @@
 
     <modules>
         <module>sl-api</module>
-        <!--可复用组建  -->
-<!--        <module>sl-core</module>-->
 
         <module>sl-common</module>
+
+        <module>sl-web</module>
+        <!--可复用组建  -->
+        <module>sl-core</module>
         <!--        &lt;!&ndash;编排组件        &ndash;&gt;-->
         <!--        <module>sl-biz</module>-->
-
         <!--        <module>sl-service</module>-->
-                <module>sl-web</module>
-        <!--        <module>sl-integration</module>-->
+                <module>sl-integration</module>
     </modules>
 
     <properties>
@@ -43,6 +43,10 @@
         <thrift.version>0.8.0</thrift.version>
         <guava.version>20.0</guava.version>
         <lombok.version>1.18.12</lombok.version>
+        <jackson.version>2.11.0</jackson.version>
+        <mybatis.version>2.1.2</mybatis.version>
+        <mysql.version>8.0.20</mysql.version>
+        <druid.version>1.0.19</druid.version>
     </properties>
 
     <distributionManagement>
@@ -67,7 +71,7 @@
                 <filtering>true</filtering>
                 <includes>
                     <include>**/*.xml</include>
-<!--                    <include>**/*</include>-->
+                    <!--                    <include>**/*</include>-->
                 </includes>
             </resource>
             <resource>
@@ -114,9 +118,6 @@
             </plugin>
 
 
-
-
-
         </plugins>
     </build>
 
@@ -131,6 +132,8 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
+
+
     </dependencies>
 
 </project>

@@ -10,3 +10,10 @@ devtools:
 spring:
   main:
     allow-bean-definition-overriding: true
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  level:
+    com.pg.sl.common.dao: debug

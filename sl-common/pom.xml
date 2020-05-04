@@ -14,10 +14,6 @@
     <version>${parent.version}</version>
     <packaging>jar</packaging>
 
-    <properties>
-        <mybatis.version>2.1.2</mybatis.version>
-        <mysql.version>8.0.20</mysql.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -33,8 +29,30 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.0.19</version>
+            <version>${druid.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.68</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+
+
 
     </dependencies>
 </project>

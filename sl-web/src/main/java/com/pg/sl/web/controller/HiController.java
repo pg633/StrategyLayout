@@ -31,9 +31,10 @@ public class HiController {
     @RequestMapping("/testSql")
     @ResponseBody
     public String getsql() {
-        System.out.println(aa.getAll());
+//        System.out.println(aa.getAllIndicator());
 //        System.out.println(aa == null);
-        return aa == null ? "ad" : "dd";
+//        return aa == null ? "ad" : "dd";
+        return "asd";
     }
 
 

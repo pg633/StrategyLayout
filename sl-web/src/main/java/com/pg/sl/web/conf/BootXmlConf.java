@@ -1,5 +1,6 @@
 package com.pg.sl.web.conf;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
@@ -10,5 +11,6 @@ import org.springframework.context.annotation.ImportResource;
  */
 @Configuration
 @ImportResource(locations = {"classpath*:sl-dao.xml"})
+@ComponentScan(basePackages={"cn.pg.sl.core"})
 public class BootXmlConf {
 }

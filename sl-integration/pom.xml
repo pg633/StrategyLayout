@@ -9,26 +9,10 @@
         <artifactId>StrategyLayout</artifactId>
         <version>1.0.0</version>
     </parent>
-
     <groupId>com.pg</groupId>
-    <artifactId>sl-core</artifactId>
-    <packaging>jar</packaging>
-
-
-    <dependencies>
-        <dependency>
-            <groupId>com.pg</groupId>
-            <artifactId>sl-common</artifactId>
-            <version>${parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.pg</groupId>
-            <artifactId>sl-integration-api</artifactId>
-            <version>${parent.version}</version>
-        </dependency>
-
-    </dependencies>
-
-
+    <artifactId>sl-integration</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>sl-integration-api</module>
+    </modules>
 </project>
