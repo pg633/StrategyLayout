@@ -7,8 +7,6 @@ import cn.pg.sl.core.model.UnitIndicatorPara;
 import cn.pg.sl.core.model.enums.UnitIndicatorType;
 import cn.pg.sl.core.repository.UnitRepository;
 import cn.pg.sl.core.service.IndicatorService;
-import cn.pg.sl.integration.api.udf.GroovyAction;
-import cn.pg.sl.integration.api.udf.GroovyBeanManager;
 import cn.pg.sl.integration.api.IUnitFuncService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.pg.sl.common.enums.ParaEnum;
@@ -36,8 +34,8 @@ import java.util.Optional;
 public class IndicatorServiceimpl implements IndicatorService {
     @Autowired
     private ApplicationContext apx;
-    @Autowired
-    private GroovyBeanManager groovyBeanManager;
+//    @Autowired
+//    private GroovyBeanManager groovyBeanManager;
 
     @Autowired
     private UnitRepository unitRepository;
@@ -49,7 +47,6 @@ public class IndicatorServiceimpl implements IndicatorService {
 
     @Override
     public Object calulateIndicator(UnitIndicator indicator, Map<String, Object> contextMap) {
-
 
         // 组装上下文
         Map<String, Object> calculateParamMap = new HashMap<String, Object>();
@@ -116,31 +113,31 @@ public class IndicatorServiceimpl implements IndicatorService {
                 /**
                  * 脚本调用
                  */
-                Optional<GroovyAction> groovyResult = groovyBeanManager.getGroovyBean(dependServerInter.getClassName());
-                if (groovyResult.isPresent()) {
-                    try {
-                        result = groovyResult.get().doAction(calculateParamMap);
-                    } catch (Exception e) {
-                        log.error("groovyaction execution failed,action:{} params:{}", dependServerInter.getClassName(), calculateParamMap);
-                        return null;
-                    }
-                }
+//                Optional<GroovyAction> groovyResult = groovyBeanManager.getGroovyBean(dependServerInter.getClassName());
+//                if (groovyResult.isPresent()) {
+//                    try {
+//                        result = groovyResult.get().doAction(calculateParamMap);
+//                    } catch (Exception e) {
+//                        log.error("groovyaction execution failed,action:{} params:{}", dependServerInter.getClassName(), calculateParamMap);
+//                        return null;
+//                    }
+//                }
                 break;
 
             }
         }
         String groovyName = unitRepository.getIndicatorByIndiName(indicator.getName());
-        if (!StringUtils.isEmpty(groovyName)) {
-            Optional<GroovyAction> groovyResult = groovyBeanManager.getGroovyBean(groovyName);
-            if (groovyResult.isPresent()) {
-                Map<String, Object> postpositionParamMap = concatPostParams(calculateParamMap, indicator, result);
-                try {
-                    return groovyResult.get().doAction(postpositionParamMap);
-                } catch (Exception e) {
-                    log.error("groovyaction execution failed,action:{} params:{}", groovyName, postpositionParamMap);
-                }
-            }
-        }
+//        if (!StringUtils.isEmpty(groovyName)) {
+//            Optional<GroovyAction> groovyResult = groovyBeanManager.getGroovyBean(groovyName);
+//            if (groovyResult.isPresent()) {
+//                Map<String, Object> postpositionParamMap = concatPostParams(calculateParamMap, indicator, result);
+//                try {
+//                    return groovyResult.get().doAction(postpositionParamMap);
+//                } catch (Exception e) {
+//                    log.error("groovyaction execution failed,action:{} params:{}", groovyName, postpositionParamMap);
+//                }
+//            }
+//        }
         return result;
 
     }

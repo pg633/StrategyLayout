@@ -10,12 +10,15 @@
         <version>1.0.0</version>
     </parent>
     <groupId>com.pg</groupId>
-    <artifactId>sl-integration</artifactId>
-    <version>${parent.version}</version>
-    <packaging>pom</packaging>
-    <modules>
-        <module>sl-integration-api</module>
-        <module>sl-integration-tair</module>
-        <module>sl-integration-redis</module>
-    </modules>
+    <artifactId>sl-integration-tair</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.pg</groupId>
+            <artifactId>sl-integration-api</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+    </dependencies>
 </project>

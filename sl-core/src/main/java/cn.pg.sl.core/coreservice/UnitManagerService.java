@@ -9,7 +9,6 @@ import com.google.common.collect.Maps;
 import com.pg.sl.common.exec.AsyncLeader;
 import com.pg.sl.common.exec.Leader;
 import com.pg.sl.common.exec.Task;
-import com.pg.sl.common.exec.Worker;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -100,13 +99,18 @@ public class UnitManagerService {
      * 存储指标计算
      */
     public Object store(List<String> unitLists, Map<String, Object> contextMap) {
-        AsyncLeader.doExe(new UnitStoreTask(this,unitLists,contextMap),storeRequestExecutor);
+        AsyncLeader.doExe(new UnitStoreTask(this, unitLists, contextMap), storeRequestExecutor);
         return "success";
 
     }
 
     public Object finalstore(List<String> unitLists, Map<String, Object> contextMap) {
-        return getFinalIndicatorValue(unitLists, contextMap, unitStoreTimeout);
+        try {
+            return getFinalIndicatorValue(unitLists, contextMap, unitStoreTimeout);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     private Map<String, Object> getFinalIndicatorValue(List<String> indicatorNameList,
@@ -121,16 +125,12 @@ public class UnitManagerService {
             log.info("没有找到对指标{}", indicatorNameList);
         }
         int maxLevel = pathRoute.keySet().stream().max((o1, o2) -> o1.compareTo(o2)).get();
-
+        Map<String, Task> callMap = Maps.newHashMap();
         for (int i = MINLEVEL; i <= maxLevel; i++) {
             Set<UnitIndicator> indicators = pathRoute.get(i);
             if (CollectionUtils.isEmpty(indicators)) {
                 continue;
             }
-
-
-            Map<String, Task> callMap = Maps.newHashMap();
-
             for (UnitIndicator indicator : indicators) {
                 int expireTime = indicator.getExpireTime();
                 if (expireTime != 0 && expireTime > timeout) {
@@ -139,6 +139,8 @@ public class UnitManagerService {
 //                contextMap.put("CLIENT_APP",ContextUtils.getLocalContext("CLIENT_APP"));
                 callMap.put(indicator.getName(), new UnitExeTask(indicatorService, indicator, contextMap));
             }
+
+
             Map<String, Object> rets = Leader.doExe(callMap, calculateExecutor, timeout);
             contextMap.putAll(rets);
         }

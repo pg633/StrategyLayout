@@ -3,32 +3,27 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>com.pg</groupId>
-        <artifactId>StrategyLayout</artifactId>
+        <artifactId>sl-integration</artifactId>
         <version>1.0.0</version>
     </parent>
 
     <groupId>com.pg</groupId>
-    <artifactId>sl-core</artifactId>
+    <artifactId>sl-integration-redis</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
-
 
     <dependencies>
         <dependency>
-            <groupId>com.pg</groupId>
-            <artifactId>sl-common</artifactId>
-            <version>${parent.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.pg</groupId>
-            <artifactId>sl-biz</artifactId>
+            <artifactId>sl-integration-api</artifactId>
             <version>${parent.version}</version>
         </dependency>
-
     </dependencies>
-
 
 </project>

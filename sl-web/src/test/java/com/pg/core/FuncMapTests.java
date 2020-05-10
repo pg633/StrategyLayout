@@ -88,9 +88,10 @@ public class FuncMapTests {
     @Before
     public void before(){
         unitFuncRepository.loadAll();
+        System.out.println(JSONObject.toJSONString(unitFuncRepository.cache));
         unitRepository.loadAll();
 
-        System.out.println(JSONObject.toJSONString(unitFuncRepository.cache));
+
         System.out.println(JSONObject.toJSONString(unitRepository.cache));
 
     }
@@ -102,10 +103,10 @@ public class FuncMapTests {
 
         Map<String, Object> contextMap = new HashMap<>();
 
-        unitLists.add("audit_eventuuid_value_store");
+        unitLists.add("fakeuserwhite_platform_userId_offlineread");
 
-        contextMap.put("eventUuid","eventUuid");
-        contextMap.put("eventContextJson","eventContextJson");
+        contextMap.put("userid","userid");
+        contextMap.put("platform","dp");
 
 
 //        MANU	inner_tableName	credit_dtc_event
@@ -113,15 +114,15 @@ public class FuncMapTests {
 //        ATTRIBUTE	value	eventContextJson
 
 
-        Object store = unitManagerService.store(unitLists, contextMap);
+        Object store = unitManagerService.finalstore(unitLists, contextMap);
         System.out.println(store);
 
 
-        UnitIndicator indicator = unitRepository.cache.get("audit_eventuuid_value_store");
-        Map<String, Task> callMap = Maps.newHashMap();
-        callMap.put(indicator.getName(), new UnitExeTask(indicatorService, indicator, contextMap));
-        Map<String, Object> rets = Leader.doExe(callMap, calculateExecutor, 100);
-        System.out.println(JSONObject.toJSONString(rets));
+//        UnitIndicator indicator = unitRepository.cache.get("fakeuserwhite_platform_userId_offlineread");
+//        Map<String, Task> callMap = Maps.newHashMap();
+//        callMap.put(indicator.getName(), new UnitExeTask(indicatorService, indicator, contextMap));
+//        Map<String, Object> rets = Leader.doExe(callMap, calculateExecutor, 100);
+//        System.out.println(JSONObject.toJSONString(rets));
 
     }
 
@@ -130,7 +131,7 @@ public class FuncMapTests {
     public void func (){
 //        UnitFuncIndicator functionById = unitFuncRepository.getFunctionById(61);
 //        System.out.println(functionById);
-        UnitIndicator audit_eventuuid_value_store = unitRepository.getIndicatorByName("audit_eventuuid_value_store");
-        System.out.println(JSONObject.toJSONString(audit_eventuuid_value_store));
+//        UnitIndicator audit_eventuuid_value_store = unitRepository.getIndicatorByName("audit_eventuuid_value_store");
+//        System.out.println(JSONObject.toJSONString(audit_eventuuid_value_store));
     }
 }

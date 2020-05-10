@@ -26,10 +26,12 @@
         <module>sl-web</module>
         <!--可复用组建  -->
         <module>sl-core</module>
-        <!--        &lt;!&ndash;编排组件        &ndash;&gt;-->
-        <!--        <module>sl-biz</module>-->
+
         <!--        <module>sl-service</module>-->
-                <module>sl-integration</module>
+        <module>sl-integration</module>
+        <!--编排组件        -->
+        <module>sl-biz</module>
+
     </modules>
 
     <properties>
@@ -81,6 +83,7 @@
                     <include>**/*.xml</include>
                     <include>**/*.yml</include>
                     <include>**/*.properties</include>
+                    <include>**/spring.factories</include>
                 </includes>
             </resource>
         </resources>
@@ -101,7 +104,6 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -126,12 +128,21 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+            <scope>compile</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
 
 
     </dependencies>

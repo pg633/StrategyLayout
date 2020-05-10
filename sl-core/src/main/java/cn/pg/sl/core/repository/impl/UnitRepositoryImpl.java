@@ -1,6 +1,5 @@
 package cn.pg.sl.core.repository.impl;
 
-import cn.pg.sl.core.model.UnitFuncIndicator;
 import cn.pg.sl.core.model.UnitIndicator;
 import cn.pg.sl.core.model.UnitIndicatorPara;
 import cn.pg.sl.core.model.enums.UnitIndicatorType;
@@ -9,7 +8,6 @@ import cn.pg.sl.core.repository.UnitRepository;
 import cn.pg.sl.core.util.MapList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.pg.sl.common.bean.TbUintIndicatorPara;
 import com.pg.sl.common.bean.TbUnitGroovy;
 import com.pg.sl.common.bean.TbUnitIndicator;
 import com.pg.sl.common.dao.IndicatorDao;
@@ -93,7 +91,7 @@ public class UnitRepositoryImpl implements UnitRepository {
                                 Lists.newArrayList(),
                                 indi.getLevel(),
                                 indi.getStoreNode(),
-                                new CopyOnWriteArrayList<>(indicationParas.get(indi.getId())),
+                                new CopyOnWriteArrayList<>(),
                                 indi.getExpireTime()
 
                         ));
