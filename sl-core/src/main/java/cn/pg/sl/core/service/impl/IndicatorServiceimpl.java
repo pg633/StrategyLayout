@@ -8,6 +8,7 @@ import cn.pg.sl.core.model.enums.UnitIndicatorType;
 import cn.pg.sl.core.repository.UnitRepository;
 import cn.pg.sl.core.service.IndicatorService;
 import cn.pg.sl.integration.api.IUnitFuncService;
+import cn.pg.sl.integration.api.udf.GroovyBeanManager;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.pg.sl.common.enums.ParaEnum;
 import com.pg.sl.common.util.ConstantUtil;
@@ -17,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,8 +34,8 @@ import java.util.Optional;
 public class IndicatorServiceimpl implements IndicatorService {
     @Autowired
     private ApplicationContext apx;
-//    @Autowired
-//    private GroovyBeanManager groovyBeanManager;
+    @Autowired
+    private GroovyBeanManager groovyBeanManager;
 
     @Autowired
     private UnitRepository unitRepository;

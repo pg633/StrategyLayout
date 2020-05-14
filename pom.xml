@@ -31,6 +31,8 @@
         <module>sl-integration</module>
         <!--编排组件        -->
         <module>sl-biz</module>
+        <!-- 工具类       -->
+        <module>sl-utils</module>
 
     </modules>
 
@@ -49,6 +51,8 @@
         <mybatis.version>2.1.2</mybatis.version>
         <mysql.version>8.0.20</mysql.version>
         <druid.version>1.0.19</druid.version>
+        <redis.version>3.2.0</redis.version>
+        <fastjson.version>1.2.67</fastjson.version>
     </properties>
 
     <distributionManagement>
@@ -84,6 +88,7 @@
                     <include>**/*.yml</include>
                     <include>**/*.properties</include>
                     <include>**/spring.factories</include>
+                    <include>**/banner.txt</include>
                 </includes>
             </resource>
         </resources>
@@ -142,7 +147,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
 
 
     </dependencies>

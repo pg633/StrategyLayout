@@ -21,14 +21,15 @@
             <artifactId>sl-integration-api</artifactId>
             <version>${parent.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.pg</groupId>-->
-<!--            <artifactId>sl-integration-tair</artifactId>-->
-<!--            <version>${parent.version}</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>com.pg</groupId>
             <artifactId>sl-integration-redis</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.pg</groupId>
+            <artifactId>sl-integration-udf</artifactId>
             <version>${parent.version}</version>
         </dependency>
 

@@ -17,5 +17,7 @@
         <module>sl-integration-api</module>
         <module>sl-integration-tair</module>
         <module>sl-integration-redis</module>
+        <module>sl-integration-cache</module>
+        <module>sl-integration-udf</module>
     </modules>
 </project>
