@@ -1,0 +1,40 @@
+version: '3'
+services:
+#  docker-eureka:
+#    image: pragcor/docker-eureka
+#    container_name: docker-eureka
+#    restart: always
+#
+#    ports:
+#      - 8761:8761
+  mysql:
+    image: mysql:latest
+    container_name: sl_mysql
+    restart: on-failure
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456789
+      - LANG=C.UTF-8
+
+  redis:
+    image: redis:latest
+    container_name: sl_redis
+    restart: on-failure
+    command: --appendonly yes
+    ports:
+      - 6379:6379
+
+# 需要修改代码中 ip 地址为 docker net host
+#  sl-web:
+#    image: pragcor/sl-web
+#    container_name: sl_web
+#    restart: on-failure
+#    ports:
+#      - 9008:9008
+#    links:
+#      - mysql
+#      - redis
+#    depends_on:
+#      - mysql
+#      - redis

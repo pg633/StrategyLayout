@@ -1,4 +1,5 @@
-#!/bin/bash
+#! /bin/bash
+
 function mvn_com() {
   cd ..
   mvn clean package  -Dmaven.test.skip=true
@@ -27,4 +28,24 @@ function text_redis() {
   #  docker exec -it redis_s redis-cli -h 192.168.1.100 -p 6379 -a your_password //如果有密码 使用 -a参数
 }
 
-text_redis
+function gpg_sql_b() {
+tar -czf - ../sl-common/src/main/resources/my.sql | openssl enc -e -aes256 -out ../sl-common/src/main/resources/mysql.tar.gz
+
+
+
+
+    
+}
+function gpg_sql_f() {
+   openssl enc -d -aes256 -in ../sl-common/src/main/resources/mysql.tar.gz | tar xz  -C ../sl-common/src/main/resources/.
+}
+
+
+
+function gpg_sql_f2() {
+   openssl enc -d -aes256 -in ../sl-common/src/main/resources/mysql.tar.gz | tar xz  -C ../sl-common/src/main/resources/.
+}
+
+
+#text_redis
+gpg_sql_f2
