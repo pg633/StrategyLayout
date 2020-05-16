@@ -2,20 +2,14 @@ package cn.pg.sl.integration.test;
 
 import cn.pg.sl.integration.api.redis.conf.RedisClient;
 import cn.pg.sl.integration.api.redis.service.City;
-import cn.pg.sl.integration.api.redis.service.UserInfo;
 import cn.pg.sl.integration.api.redis.service.UserServiceImpl;
 import cn.pg.sl.integration.api.redis.util.RedisUtils;
-import com.alibaba.fastjson.JSONObject;
-import com.sun.xml.internal.fastinfoset.algorithm.BASE64EncodingAlgorithm;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author lianzheng04

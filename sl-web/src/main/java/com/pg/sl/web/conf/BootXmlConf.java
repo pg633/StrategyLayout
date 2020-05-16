@@ -10,7 +10,6 @@ import org.springframework.context.annotation.ImportResource;
  * @date 2020/5/3 12:15 上午
  */
 @Configuration
-@ImportResource(locations = {"classpath*:sl-dao.xml"})
-@ComponentScan(basePackages={"cn.pg.sl.core"})
+//@ImportResource(locations = {"classpath*:sl-dao.xml"})
 public class BootXmlConf {
 }

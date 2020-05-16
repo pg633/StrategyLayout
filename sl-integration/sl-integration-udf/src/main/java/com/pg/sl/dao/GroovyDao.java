@@ -1,7 +1,8 @@
 package com.pg.sl.dao;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import com.pg.sl.dao.entities.GroovyParam;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.type.JdbcType;
 
 import java.util.List;
 
@@ -14,15 +15,29 @@ import java.util.List;
 public interface GroovyDao {
 
 
-    @Select(value = "select script " + " from groovy_func_udf    ")
-//        @Results(id = "unitIndiFuncaMap", value = {
-//                @Result(property = "id", column = "id", jdbcType = JdbcType.INTEGER),
-//                @Result(property = "funcId", column = "indicator_provider_id", jdbcType = JdbcType.INTEGER),
-//                @Result(property = "name", column = "name", jdbcType = JdbcType.VARCHAR),
-//                @Result(property = "description", column = "description", jdbcType = JdbcType.VARCHAR),
-//                @Result(property = "dateType", column = "data_type", jdbcType = JdbcType.VARCHAR),
-//        })
-    String getAllFuncPara();
+    @Select("select `id`,`name`, `description`, `script`, `status`\n" +
+            "from groovy_func_udf\n" +
+            "where status = 1 ;")
+    @Results(id = "groovyParamMap", value = {
+            @Result(property = "id", column = "id", jdbcType = JdbcType.INTEGER),
+            @Result(property = "name", column = "name", jdbcType = JdbcType.VARCHAR),
+            @Result(property = "description", column = "description", jdbcType = JdbcType.VARCHAR),
+            @Result(property = "script", column = "script", jdbcType = JdbcType.VARCHAR),
+            @Result(property = "status", column = "status", jdbcType = JdbcType.INTEGER),
+    })
+    List<GroovyParam> getAllScript();
+
+
+    @Select("select `id`,`name`, `description`, `script`, `status`\n" +
+            "from groovy_func_udf\n" +
+            "where status = 1 " +
+            "and name= #{name} ")
+    @ResultMap("groovyParamMap")
+    GroovyParam getScriptByName(String name);
+
+
+
+
 
 
 }

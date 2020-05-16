@@ -20,13 +20,10 @@
 
     <modules>
         <module>sl-api</module>
-
         <module>sl-common</module>
-
         <module>sl-web</module>
         <!--可复用组建  -->
         <module>sl-core</module>
-
         <!--        <module>sl-service</module>-->
         <module>sl-integration</module>
         <!--编排组件        -->
@@ -53,6 +50,8 @@
         <druid.version>1.0.19</druid.version>
         <redis.version>3.2.0</redis.version>
         <fastjson.version>1.2.67</fastjson.version>
+        <mybatis.plus.version>2.3</mybatis.plus.version>
+        <mybatis.version>1.0.4</mybatis.version>
     </properties>
 
     <distributionManagement>

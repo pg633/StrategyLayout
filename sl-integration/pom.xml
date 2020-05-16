@@ -19,5 +19,6 @@
         <module>sl-integration-redis</module>
         <module>sl-integration-cache</module>
         <module>sl-integration-udf</module>
+        <module>sl-integration-mybatis-plus</module>
     </modules>
 </project>

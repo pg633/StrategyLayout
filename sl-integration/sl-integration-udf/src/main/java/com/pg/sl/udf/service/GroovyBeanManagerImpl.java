@@ -13,7 +13,7 @@ import java.util.Optional;
  * @version 1.0
  * @date 2020/5/14 8:31 上午
  */
-@Component
+@Component("GroovyBeanManager")
 public class GroovyBeanManagerImpl implements GroovyBeanManager {
     @Autowired
     private GroovyCacheManager groovyCacheManager;

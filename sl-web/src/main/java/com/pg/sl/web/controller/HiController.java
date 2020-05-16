@@ -28,6 +28,7 @@ public class HiController {
     @Autowired
     private IndicatorDao aa;
 
+
     @RequestMapping("/testSql")
     @ResponseBody
     public String getsql() {

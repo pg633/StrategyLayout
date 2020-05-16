@@ -1,102 +1,102 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"-->
+<!--       xmlns:aop="http://www.springframework.org/schema/aop"-->
+<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">-->
 
-<!--    <context:component-scan base-package="com.pg.sl.common"></context:component-scan>-->
+<!--&lt;!&ndash;    <context:component-scan base-package="com.pg.sl.common"></context:component-scan>&ndash;&gt;-->
 
-    <!--1 引入属性文件，在配置中占位使用 -->
-    <context:property-placeholder location="classpath*:mysql.properties"/>
+<!--    &lt;!&ndash;1 引入属性文件，在配置中占位使用 &ndash;&gt;-->
+<!--    <context:property-placeholder location="classpath*:mysql.properties"/>-->
 
-    <!-- 配置数据源 -->
-    <bean id="datasource" class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="username" value="${jdbc.user}"></property>
-        <property name="password" value="${jdbc.password}"></property>
-        <property name="driverClassName" value="${jdbc.driver}"></property>
-        <property name="url" value="${jdbc.url}"></property>
-        <!-- 初始化连接大小 -->
-        <property name="initialSize" value="0"></property>
-        <!-- 连接池最大使用连接数量 -->
-        <property name="maxActive" value="20"></property>
-        <!-- 连接池最小空闲 -->
-        <property name="minIdle" value="0"/>
-        <!-- 获取连接最大等待时间 -->
-        <property name="maxWait" value="60000"/>
+<!--    &lt;!&ndash; 配置数据源 &ndash;&gt;-->
+<!--    <bean id="datasource" class="com.alibaba.druid.pool.DruidDataSource">-->
+<!--        <property name="username" value="${jdbc.user}"></property>-->
+<!--        <property name="password" value="${jdbc.password}"></property>-->
+<!--        <property name="driverClassName" value="${jdbc.driver}"></property>-->
+<!--        <property name="url" value="${jdbc.url}"></property>-->
+<!--        &lt;!&ndash; 初始化连接大小 &ndash;&gt;-->
+<!--        <property name="initialSize" value="0"></property>-->
+<!--        &lt;!&ndash; 连接池最大使用连接数量 &ndash;&gt;-->
+<!--        <property name="maxActive" value="20"></property>-->
+<!--        &lt;!&ndash; 连接池最小空闲 &ndash;&gt;-->
+<!--        <property name="minIdle" value="0"/>-->
+<!--        &lt;!&ndash; 获取连接最大等待时间 &ndash;&gt;-->
+<!--        <property name="maxWait" value="60000"/>-->
 
-        <property name="validationQuery">
-            <value>SELECT 1</value>
-        </property>
-        <property name="testOnBorrow" value="false"/>
-        <property name="testOnReturn" value="false"/>
-        <property name="testWhileIdle" value="true"/>
-        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
-        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-        <property name="minEvictableIdleTimeMillis" value="25200000"/>
-        <!-- 打开removeAbandoned功能 -->
-        <property name="removeAbandoned" value="true"/>
-        <!-- 1800秒，也就是30分钟 -->
-        <property name="removeAbandonedTimeout" value="1800"/>
-        <!-- 关闭abanded连接时输出错误日志 -->
-        <property name="logAbandoned" value="true"/>
+<!--        <property name="validationQuery">-->
+<!--            <value>SELECT 1</value>-->
+<!--        </property>-->
+<!--        <property name="testOnBorrow" value="false"/>-->
+<!--        <property name="testOnReturn" value="false"/>-->
+<!--        <property name="testWhileIdle" value="true"/>-->
+<!--        &lt;!&ndash; 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 &ndash;&gt;-->
+<!--        <property name="timeBetweenEvictionRunsMillis" value="60000"/>-->
+<!--        &lt;!&ndash; 配置一个连接在池中最小生存的时间，单位是毫秒 &ndash;&gt;-->
+<!--        <property name="minEvictableIdleTimeMillis" value="25200000"/>-->
+<!--        &lt;!&ndash; 打开removeAbandoned功能 &ndash;&gt;-->
+<!--        <property name="removeAbandoned" value="true"/>-->
+<!--        &lt;!&ndash; 1800秒，也就是30分钟 &ndash;&gt;-->
+<!--        <property name="removeAbandonedTimeout" value="1800"/>-->
+<!--        &lt;!&ndash; 关闭abanded连接时输出错误日志 &ndash;&gt;-->
+<!--        <property name="logAbandoned" value="true"/>-->
 
-        <!-- 监控数据库 -->
-        <!-- <property name="filters" value="stat" /> -->
-        <property name="filters" value="mergeStat"/>
-    </bean>
+<!--        &lt;!&ndash; 监控数据库 &ndash;&gt;-->
+<!--        &lt;!&ndash; <property name="filters" value="stat" /> &ndash;&gt;-->
+<!--        <property name="filters" value="mergeStat"/>-->
+<!--    </bean>-->
 
-    <!--3 会话工厂bean sqlSessionFactoryBean -->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <!-- 数据源 -->
-        <property name="dataSource" ref="datasource"></property>
-        <!-- 别名 -->
-        <property name="typeAliasesPackage" value="com.zhangguo.bookstore.entities"></property>
-        <!-- sql映射文件路径 -->
-        <property name="mapperLocations">
-            <array>
-<!--                <value>classpath*:com/pg/sl/common/dao/mapper/*.xml</value>-->
-            </array>
-        </property>
-    </bean>
+<!--    &lt;!&ndash;3 会话工厂bean sqlSessionFactoryBean &ndash;&gt;-->
+<!--    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+<!--        &lt;!&ndash; 数据源 &ndash;&gt;-->
+<!--        <property name="dataSource" ref="datasource"></property>-->
+<!--        &lt;!&ndash; 别名 &ndash;&gt;-->
+<!--        <property name="typeAliasesPackage" value="com.zhangguo.bookstore.entities"></property>-->
+<!--        &lt;!&ndash; sql映射文件路径 &ndash;&gt;-->
+<!--        <property name="mapperLocations">-->
+<!--            <array>-->
+<!--&lt;!&ndash;                <value>classpath*:com/pg/sl/common/dao/mapper/*.xml</value>&ndash;&gt;-->
+<!--            </array>-->
+<!--        </property>-->
+<!--    </bean>-->
 
-    <!--4 自动扫描对象关系映射 -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <!--指定会话工厂，如果当前上下文中只定义了一个则该属性可省去 -->
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
-        <!-- 指定要自动扫描接口的基础包，实现接口 -->
-        <property name="basePackage" value="com.pg.sl.common.dao"></property>
-    </bean>
+<!--    &lt;!&ndash;4 自动扫描对象关系映射 &ndash;&gt;-->
+<!--    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+<!--        &lt;!&ndash;指定会话工厂，如果当前上下文中只定义了一个则该属性可省去 &ndash;&gt;-->
+<!--        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>-->
+<!--        &lt;!&ndash; 指定要自动扫描接口的基础包，实现接口 &ndash;&gt;-->
+<!--        <property name="basePackage" value="com.pg.sl.common.dao"></property>-->
+<!--    </bean>-->
 
-    <!--5 声明式事务管理 -->
-    <!--定义事物管理器，由spring管理事务 -->
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="datasource"></property>
-    </bean>
-    <tx:annotation-driven proxy-target-class="true"
-                          transaction-manager="transactionManager" />
+<!--    &lt;!&ndash;5 声明式事务管理 &ndash;&gt;-->
+<!--    &lt;!&ndash;定义事物管理器，由spring管理事务 &ndash;&gt;-->
+<!--    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+<!--        <property name="dataSource" ref="datasource"></property>-->
+<!--    </bean>-->
+<!--    <tx:annotation-driven proxy-target-class="true"-->
+<!--                          transaction-manager="transactionManager" />-->
 
-    <tx:advice id="txAdvice" transaction-manager="transactionManager">
-        <tx:attributes>
-            <tx:method name="save*" rollback-for="Exception" />
-            <tx:method name="add*" rollback-for="Exception" />
-        </tx:attributes>
-    </tx:advice>
+<!--    <tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+<!--        <tx:attributes>-->
+<!--            <tx:method name="save*" rollback-for="Exception" />-->
+<!--            <tx:method name="add*" rollback-for="Exception" />-->
+<!--        </tx:attributes>-->
+<!--    </tx:advice>-->
 
-<!--    <aop:config>-->
-<!--        <aop:pointcut id="serviceOperation"-->
-<!--                      expression="execution(* com.dianping.credit.dtc..*service.*(..))" />-->
-<!--        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" />-->
-<!--    </aop:config>-->
-
-
-
-    <!--6 容器自动扫描IOC组件  -->
-    <!--    <context:component-scan base-package="com.zhangguo.bookstore"></context:component-scan>-->
-
-    <!--7 aspectj支持自动代理实现AOP功能 -->
-    <!--    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>-->
+<!--&lt;!&ndash;    <aop:config>&ndash;&gt;-->
+<!--&lt;!&ndash;        <aop:pointcut id="serviceOperation"&ndash;&gt;-->
+<!--&lt;!&ndash;                      expression="execution(* com.dianping.credit.dtc..*service.*(..))" />&ndash;&gt;-->
+<!--&lt;!&ndash;        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" />&ndash;&gt;-->
+<!--&lt;!&ndash;    </aop:config>&ndash;&gt;-->
 
 
-</beans>
+
+<!--    &lt;!&ndash;6 容器自动扫描IOC组件  &ndash;&gt;-->
+<!--    &lt;!&ndash;    <context:component-scan base-package="com.zhangguo.bookstore"></context:component-scan>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;7 aspectj支持自动代理实现AOP功能 &ndash;&gt;-->
+<!--    &lt;!&ndash;    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>&ndash;&gt;-->
+
+
+<!--</beans>-->

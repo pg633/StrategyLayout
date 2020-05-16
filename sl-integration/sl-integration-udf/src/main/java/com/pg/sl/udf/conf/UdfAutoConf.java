@@ -1,5 +1,6 @@
 package com.pg.sl.udf.conf;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
@@ -10,7 +11,10 @@ import org.springframework.context.annotation.ImportResource;
  * @date 2020/5/14 8:43 上午
  */
 @Configuration
-//@ImportResource(locations = {"classpath*:sl-udf-dao.xml"})
 @ComponentScan(value = "com.pg.sl.udf")
 public class UdfAutoConf {
+//    @Bean
+//    String ss(){
+//        return new String("11");
+//    }
 }

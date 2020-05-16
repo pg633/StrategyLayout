@@ -9,6 +9,7 @@ import cn.pg.sl.core.repository.UnitFuncRepository;
 import cn.pg.sl.core.repository.impl.UnitFuncRepositoryImpl;
 import cn.pg.sl.core.repository.impl.UnitRepositoryImpl;
 import cn.pg.sl.core.service.IndicatorService;
+import cn.pg.sl.core.service.impl.IndicatorServiceimpl;
 import cn.pg.sl.core.util.MapList;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Maps;
@@ -133,5 +134,12 @@ public class FuncMapTests {
 //        System.out.println(functionById);
 //        UnitIndicator audit_eventuuid_value_store = unitRepository.getIndicatorByName("audit_eventuuid_value_store");
 //        System.out.println(JSONObject.toJSONString(audit_eventuuid_value_store));
+    }
+    @Autowired
+    private IndicatorServiceimpl indicatorServiceimpl;
+
+    @Test
+    public void funcIndi (){
+        System.out.println(indicatorServiceimpl ==null);
     }
 }

@@ -22,7 +22,6 @@ import org.springframework.util.CollectionUtils;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * @author lianzheng04
@@ -34,8 +33,8 @@ import java.util.Optional;
 public class IndicatorServiceimpl implements IndicatorService {
     @Autowired
     private ApplicationContext apx;
-    @Autowired
-    private GroovyBeanManager groovyBeanManager;
+//    @Autowired
+//    private GroovyBeanManager groovyBeanManager;
 
     @Autowired
     private UnitRepository unitRepository;
